@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FitLife America - Your trusted source for health, fitness, nutrition, and wellness advice. Expert tips, workout guides, and healthy living strategies for Americans.">
+    <meta name="keywords" content="fitness, health, nutrition, workout, wellness, exercise, healthy living, weight loss, muscle building">
+    <meta name="author" content="FitLife America">
+    <meta property="og:title" content="FitLife America - Health & Fitness Blog">
+    <meta property="og:description" content="Expert health and fitness advice for a stronger, healthier you">
+    <meta property="og:type" content="website">
+    <title>FitLife America - Health & Fitness Blog</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #ff6b35;
+            --secondary-color: #004e89;
+            --accent-color: #00d4ff;
+            --dark: #1a1a2e;
+            --light: #f5f5f5;
+            --white: #ffffff;
+            --text-dark: #333;
+            --text-light: #666;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--light);
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .top-bar {
+            background: rgba(0,0,0,0.2);
+            padding: 8px 0;
+            font-size: 14px;
+        }
+
+        .top-bar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .social-links a {
+            color: var(--white);
+            margin-left: 15px;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600&h=900&fit=crop') center/cover;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            margin-bottom: 20px;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 20px rgba(255,107,53,0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255,107,53,0.6);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Categories Section */
+        .categories {
+            padding: 80px 20px;
+            background: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 50px;
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .category-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .category-content {
+            padding: 25px;
+        }
+
+        .category-content h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .category-content p {
+            color: var(--text-light);
+            font-size: 15px;
+        }
+
+        /* Featured Articles */
+        .featured {
+            padding: 80px 20px;
+            background: var(--light);
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .article-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .article-card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+        }
+
+        .article-content {
+            padding: 30px;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .article-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .article-content h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--dark);
+            line-height: 1.4;
+        }
+
+        .article-content p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: gap 0.3s;
+        }
+
+        .read-more:hover {
+            gap: 10px;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--dark) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .newsletter p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            min-width: 250px;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+        }
+
+        .newsletter-form button {
+            padding: 15px 40px;
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            background: #ff5722;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 60px 20px 20px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .footer-section p, .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            line-height: 2;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--dark);
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .category-grid, .articles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input {
+                min-width: 100%;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Privacy & About Pages Styling */
+        .content-page {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 80px 20px;
+            background: var(--white);
+        }
+
+        .content-page h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .content-page h2 {
+            font-size: 28px;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .content-page p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        .content-page ul {
+            margin: 20px 0;
+            padding-left: 30px;
+        }
+
+        .content-page li {
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="container">
+                <div>📧 Subscribe to our newsletter for daily health tips</div>
+                <div class="social-links">
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">Twitter</a>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <a href="#" class="logo">FitLife<span>America</span></a>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#articles">Articles</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Transform Your Life with FitLife America</h1>
+            <p>Expert health and fitness advice, nutrition tips, and workout guides to help you achieve your wellness goals</p>
+            <a href="#articles" class="cta-button">Explore Articles</a>
+        </div>
+    </section>
+
+    <section class="categories" id="categories">
+        <h2 class="section-title">Health & Fitness Categories</h2>
+        <div class="category-grid">
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&h=400&fit=crop" alt="Workout Routines">
+                <div class="category-content">
+                    <h3>Workout Routines</h3>
+                    <p>Discover effective workout plans for strength, cardio, and flexibility training tailored to your fitness level.</p>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&h=400&fit=crop" alt="Nutrition Guide">
+                <div class="category-content">
+                    <h3>Nutrition Guide</h3>
+                    <p>Learn about balanced diets, meal planning, and nutritional science for optimal health and performance.</p>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&h=400&fit=crop" alt="Weight Loss">
+                <div class="category-content">
+                    <h3>Weight Loss</h3>
+                    <p>Evidence-based strategies for sustainable weight loss and maintaining a healthy body composition.</p>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&h=400&fit=crop" alt="Muscle Building">
+                <div class="category-content">
+                    <h3>Muscle Building</h3>
+                    <p>Comprehensive guides on hypertrophy training, progressive overload, and muscle recovery techniques.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured" id="articles">
+        <h2 class="section-title">Featured Articles</h2>
+        <div class="articles-grid">
+            <article class="article-card">
+                <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&h=400&fit=crop" alt="Fitness woman stretching">
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span>📅 Dec 5, 2025</span>
+                        <span>⏱️ 6 min read</span>
+                    </div>
+                    <h3>10 Essential Stretching Exercises for Better Flexibility</h3>
+                    <p>Flexibility is a crucial component of overall fitness that often gets overlooked. Discover the ten most effective stretching exercises that can improve your range of motion, reduce injury risk, and enhance athletic performance.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </article>
+
+            <article class="article-card">
+                <img src="https://images.unsplash.com/photo-1623874514711-0f321325f318?w=600&h=400&fit=crop" alt="Man doing workout">
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span>📅 Dec 4, 2025</span>
+                        <span>⏱️ 8 min read</span>
+                    </div>
+                    <h3>The Science Behind High-Intensity Interval Training</h3>
+                    <p>HIIT has revolutionized the fitness industry with its time-efficient approach. Learn about the physiological mechanisms that make HIIT so effective for fat loss, cardiovascular health, and metabolic conditioning.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </article>
+
+            <article class="article-card">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&h=400&fit=crop" alt="Healthy food bowl">
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span>📅 Dec 3, 2025</span>
+                        <span>⏱️ 7 min read</span>
+                    </div>
+                    <h3>Nutrition Timing: When to Eat for Maximum Results</h3>
+                    <p>The timing of your meals can significantly impact your fitness results. Explore evidence-based strategies for pre-workout, post-workout, and daily meal timing to optimize energy levels and recovery.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </article>
+
+            <article class="article-card">
+                <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&h=400&fit=crop" alt="Woman doing yoga">
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span>📅 Dec 2, 2025</span>
+                        <span>⏱️ 5 min read</span>
+                    </div>
+                    <h3>Mind-Body Connection: The Benefits of Yoga for Athletes</h3>
+                    <p>Yoga offers numerous benefits beyond flexibility. Discover how incorporating yoga into your training routine can improve mental focus, reduce stress, enhance recovery, and prevent injuries.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </article>
+
+            <article class="article-card">
+                <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&h=400&fit=crop" alt="Man with protein shake">
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span>📅 Dec 1, 2025</span>
+                        <span>⏱️ 9 min read</span>
+                    </div>
+                    <h3>Complete Guide to Protein Intake for Muscle Growth</h3>
+                    <p>Protein is essential for muscle development and repair. Learn about optimal protein requirements, best sources, timing strategies, and common myths surrounding protein supplementation.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </article>
+
+            <article class="article-card">
+                <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?w=600&h=400&fit=crop" alt="Woman running outdoors">
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span>📅 Nov 30, 2025</span>
+                        <span>⏱️ 6 min read</span>
+                    </div>
+                    <h3>Running Mechanics: How to Improve Your Form</h3>
+                    <p>Proper running form can enhance performance and reduce injury risk. This comprehensive guide covers foot strike patterns, cadence, posture, and breathing techniques for runners of all levels.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="newsletter">
+        <div class="container">
+            <h2>Stay Updated with FitLife America</h2>
+            <p>Subscribe to receive expert health tips, workout plans, and nutrition advice directly in your inbox</p>
+            <form class="newsletter-form" onsubmit="return handleSubscribe(event)">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit">Subscribe Now</button>
+            </form>
+        </div>
+    </section>
+
+    <footer id="about">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About FitLife America</h3>
+                <p>FitLife America is your trusted source for evidence-based health and fitness information. We're dedicated to helping Americans achieve their wellness goals through expert advice, scientific research, and practical guidance.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#home">Home</a>
+                <a href="#categories">Categories</a>
+                <a href="#articles">Articles</a>
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+            </div>
+            <div class="footer-section">
+                <h3>Categories</h3>
+                <a href="#">Workout Routines</a>
+                <a href="#">Nutrition Guide</a>
+                <a href="#">Weight Loss</a>
+                <a href="#">Muscle Building</a>
+                <a href="#">Wellness Tips</a>
+            </div>
+            <div class="footer-section" id="contact">
+                <h3>Contact Us</h3>
+                <p>📧 info@fitlifeamerica.com</p>
+                <p>📱 +1 (555) 123-4567</p>
+                <p>📍 Los Angeles, CA, USA</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 FitLife America. All rights reserved. | <a href="#privacy" style="color: inherit;">Privacy Policy</a> | <a href="#terms" style="color: inherit;">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        function handleSubscribe(e) {
+            e.preventDefault();
+            alert('Thank you for subscribing to FitLife America! Check your email for confirmation.');
+            e.target.reset();
+            return false;
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    // Close mobile menu if open
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+
+        // Animate on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.category-card, .article-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
